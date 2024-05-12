@@ -57,13 +57,15 @@
                 android:id="@+id/editImg"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/ic_edit" />
+                android:src="@drawable/ic_edit"
+                app:tint="@color/darkblue"/>
 
             <ImageView
                 android:id="@+id/deleteImg"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_delete" />
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/darkblue"/>
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
