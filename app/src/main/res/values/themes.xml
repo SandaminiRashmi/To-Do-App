@@ -14,8 +14,12 @@
         <item name="shapeAppearanceOverlay">@style/CutShape</item>
     </style>
     <style name="CutShape" parent="ShapeAppearance.Material3.MediumComponent">
-        <item name="cornerFamily">cut</item>
-        <item name="cornerSize">12dp</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+    <style name="RoundedTextInputLayout">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item> <!-- Adjust corner size as needed -->
     </style>
     <style name="Widget.App.TextInputLayout" parent="Widget.Material3.TextInputLayout.FilledBox">
         <item name="shapeAppearance">@style/CutShape</item>
