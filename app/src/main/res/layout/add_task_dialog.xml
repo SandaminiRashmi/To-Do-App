@@ -73,7 +73,7 @@
                     android:id="@+id/edTaskDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#EAE4E8"
+                    android:background="#D6E1ED"
                     android:gravity="top|start"
                     android:inputType="textMultiLine"
                     android:lines="5"
