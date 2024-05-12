@@ -68,8 +68,8 @@
 
             <ImageView
                 android:id="@+id/deleteImg"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginVertical="4dp"
                 android:src="@drawable/ic_delete"
                 app:tint="@color/darkblue"/>
