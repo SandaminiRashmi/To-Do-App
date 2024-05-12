@@ -63,14 +63,16 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginVertical="4dp"
-                android:src="@drawable/ic_edit" />
+                android:src="@drawable/ic_edit"
+                app:tint="@color/darkblue"/>
 
             <ImageView
                 android:id="@+id/deleteImg"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginVertical="4dp"
-                android:src="@drawable/ic_delete" />
+                android:src="@drawable/ic_delete"
+                app:tint="@color/darkblue"/>
         </LinearLayout>
     </RelativeLayout>
 
