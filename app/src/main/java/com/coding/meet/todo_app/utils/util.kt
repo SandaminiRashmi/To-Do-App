@@ -9,18 +9,21 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputLayout
 
+// Enum class representing different status types
 enum class Status{
     SUCCESS,
     ERROR,
     LOADING
 }
 
+// Enum class representing different result types for operations
 enum class StatusResult{
     Added,
     Updated,
     Deleted
 }
 
+// Extension function to hide the soft keyboard
 fun Context.hideKeyBoard(view : View){
     try {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -30,10 +33,12 @@ fun Context.hideKeyBoard(view : View){
     }
 }
 
+// Extension function to show a long toast message
 fun Context.longToastShow(msg:String){
     Toast.makeText(this,msg,Toast.LENGTH_LONG).show()
 }
 
+// Extension function to set up a custom dialog
 fun Dialog.setupDialog(layoutResId: Int){
     setContentView(layoutResId)
     window!!.setLayout(
@@ -43,6 +48,7 @@ fun Dialog.setupDialog(layoutResId: Int){
     setCancelable(false)
 }
 
+// Function to validate an EditText field with TextInputLayout
 fun validateEditText(editText: EditText, textTextInputLayout: TextInputLayout): Boolean {
     return when {
         editText.text.toString().trim().isEmpty() -> {
@@ -55,6 +61,8 @@ fun validateEditText(editText: EditText, textTextInputLayout: TextInputLayout): 
         }
     }
 }
+
+// Function to clear the content of an EditText field and reset TextInputLayout error
 fun clearEditText(editText: EditText, textTextInputLayout: TextInputLayout) {
     editText.text = null
     textTextInputLayout.error = null
