@@ -46,10 +46,12 @@ import java.util.UUID
 
 class MainActivity : AppCompatActivity() {
 
+    // Binding for the main activity layout
     private val mainBinding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    // Dialogs for adding, updating, and loading tasks
     private val addTaskDialog: Dialog by lazy {
         Dialog(this, R.style.DialogCustomTheme).apply {
             setupDialog(R.layout.add_task_dialog)
@@ -68,10 +70,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // View model for managing tasks
     private val taskViewModel: TaskViewModel by lazy {
         ViewModelProvider(this)[TaskViewModel::class.java]
     }
 
+    // LiveData to manage list/grid view mode
     private val isListMutableLiveData = MutableLiveData<Boolean>().apply {
         postValue(true)
     }
