@@ -1,5 +1,6 @@
 package com.coding.meet.todo_app.utils
 
+// Sealed class representing different states of a resource operation
 sealed class Resource<T>(val status: Status,val data: T? = null, val message : String? = null) {
 
     class Success<T>(message: String,data: T?= null) : Resource<T>(Status.SUCCESS,data,message)
