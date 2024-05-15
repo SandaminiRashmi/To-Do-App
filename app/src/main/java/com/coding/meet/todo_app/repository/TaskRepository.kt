@@ -19,31 +19,35 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+// Repository class responsible for handling data operations
 class TaskRepository(application: Application) {
 
+    // TaskDao instance to interact with the Room database
     private val taskDao = TaskDatabase.getInstance(application).taskDao
 
-
+    // StateFlow to emit Resource wrapping Flow of task list data
     private val _taskStateFlow = MutableStateFlow<Resource<Flow<List<Task>>>>(Loading())
     val taskStateFlow: StateFlow<Resource<Flow<List<Task>>>>
         get() = _taskStateFlow
 
+    // LiveData to observe status updates
     private val _statusLiveData = MutableLiveData<Resource<StatusResult>>()
     val statusLiveData: LiveData<Resource<StatusResult>>
         get() = _statusLiveData
 
-
+    // LiveData to observe sort order changes
     private val _sortByLiveData = MutableLiveData<Pair<String,Boolean>>().apply {
-        postValue(Pair("title",true))
+        postValue(Pair("title",true))// Default sorting by title in ascending order
     }
     val sortByLiveData: LiveData<Pair<String,Boolean>>
         get() = _sortByLiveData
 
-
+    // Function to update sort order
     fun setSortBy(sort:Pair<String,Boolean>){
         _sortByLiveData.postValue(sort)
     }
 
+    // Function to retrieve task list from the database
     fun getTaskList(isAsc : Boolean, sortByName:String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -61,7 +65,7 @@ class TaskRepository(application: Application) {
         }
     }
 
-
+    // Function to insert a task into the database
     fun insertTask(task: Task) {
         try {
             _statusLiveData.postValue(Loading())
@@ -74,7 +78,7 @@ class TaskRepository(application: Application) {
         }
     }
 
-
+    // Function to delete a task from the database
     fun deleteTask(task: Task) {
         try {
             _statusLiveData.postValue(Loading())
@@ -88,6 +92,7 @@ class TaskRepository(application: Application) {
         }
     }
 
+    // Function to delete a task using its ID from the database
     fun deleteTaskUsingId(taskId: String) {
         try {
             _statusLiveData.postValue(Loading())
@@ -101,7 +106,7 @@ class TaskRepository(application: Application) {
         }
     }
 
-
+    // Function to update a task in the database
     fun updateTask(task: Task) {
         try {
             _statusLiveData.postValue(Loading())
@@ -115,6 +120,7 @@ class TaskRepository(application: Application) {
         }
     }
 
+    // Function to update specific fields of a task in the database
     fun updateTaskPaticularField(taskId: String, title: String, description: String) {
         try {
             _statusLiveData.postValue(Loading())
@@ -128,6 +134,7 @@ class TaskRepository(application: Application) {
         }
     }
 
+    // Function to search for tasks in the database
     fun searchTaskList(query: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -140,7 +147,7 @@ class TaskRepository(application: Application) {
         }
     }
 
-
+    // Function to handle database operation results
     private fun handleResult(result: Int, message: String, statusResult: StatusResult) {
         if (result != -1) {
             _statusLiveData.postValue(Success(message, statusResult))
